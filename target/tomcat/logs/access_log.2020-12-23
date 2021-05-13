@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [23/Dec/2020:08:02:39 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-80-exec-1 0
+0:0:0:0:0:0:0:1 - - [23/Dec/2020:08:06:34 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-80-exec-9 0
+0:0:0:0:0:0:0:1 - - [23/Dec/2020:08:06:36 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-80-exec-9 0
+0:0:0:0:0:0:0:1 - - [23/Dec/2020:08:10:00 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-80-exec-5 0

@@ -1,0 +1,16 @@
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face HTTP/1.1" 302 - http-bio-80-exec-2 0
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/ HTTP/1.1" 200 2604 http-bio-80-exec-3 28
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/css/common.css HTTP/1.1" 200 4869 http-bio-80-exec-1 94
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/js/include.js HTTP/1.1" 200 192 http-bio-80-exec-7 44
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/js/bootstrap.min.js HTTP/1.1" 200 37045 http-bio-80-exec-6 52
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/js/jquery-3.3.1.js HTTP/1.1" 200 282115 http-bio-80-exec-5 68
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/css/bootstrap.min.css HTTP/1.1" 200 121070 http-bio-80-exec-4 141
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/images/1.png HTTP/1.1" 200 763052 http-bio-80-exec-8 108
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:24 +0800] "GET /face/images/2.png HTTP/1.1" 200 1217833 http-bio-80-exec-5 64
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /face/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028 http-bio-80-exec-5 66
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /face/header.html HTTP/1.1" 200 1069 http-bio-80-exec-5 2
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /face/footer.html HTTP/1.1" 404 983 http-bio-80-exec-8 4
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /face/js/getParameter.js HTTP/1.1" 200 247 http-bio-80-exec-8 3
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /face/images/op.png HTTP/1.1" 200 65512 http-bio-80-exec-8 6
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /face/user/findOne HTTP/1.1" 404 949 http-bio-80-exec-8 3
+0:0:0:0:0:0:0:1 - - [10/Mar/2021:09:08:25 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-80-exec-8 0

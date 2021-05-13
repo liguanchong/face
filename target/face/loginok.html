@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>人脸管理</title>
+    <script src="js/jquery-3.3.1.js"></script>
+
+</head>
+<meta charset="utf-8">
+<div class="top_banner" style="height: 153px;width: 1259px">
+    <img src="images/op.png" alt="">
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="page-content">
+
+                <div style="padding: 10px;">
+                	<table>
+	                    <tr>
+                            <td colspan="2">
+                                <button class="btn btn-sm btn-default" onclick="openMedia()">开启摄像头</button>
+                                <button class="btn btn-sm btn-default" onclick="closeMedia()">关闭摄像头</button>
+                                    <button class="luru_button" onclick="luru()">录入人脸数据</button>
+                                    <button  class="jiance_button" onclick="jiance()">模拟门禁检测</button>
+                            </td>
+	                    </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <video id="video" width="300px" height="300px" autoplay="autoplay"></video>
+                                <canvas id="canvas" width="300px" height="300px" style="display: none"></canvas>
+                            </td>
+                            <td>
+                                <span id="span_username" style="font-size: 50px"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <script>
+                        let mediaStreamTrack=null; // 视频对象(全局)
+                        let video ;
+                        function openMedia() {
+                            let constraints = {
+                                video: { width: 300, height: 300 },
+                                audio: false
+                            };
+                            //获得video摄像头
+                            video = document.getElementById('video');
+                            let promise = navigator.mediaDevices.getUserMedia(constraints);
+                            promise.then((mediaStream) => {
+                                mediaStreamTrack=mediaStream.getVideoTracks()
+                                video.srcObject = mediaStream;
+                                video.play();
+                            });
+                        }
+
+                        // 拍照
+                        function luru() {
+                            //获得Canvas对象
+                            let video = document.getElementById('video');
+                            let canvas = document.getElementById('canvas');
+                            let ctx = canvas.getContext('2d');
+                            ctx.drawImage(video, 0, 0, 300, 300);
+
+                            let img = document.getElementById('canvas').toDataURL();
+                            // 这里的img就是得到的图片
+                            // console.log('img-----', img);
+                            // document.getElementById('imgTag').src=img;
+                            //上传
+                            $.ajax({
+                                url:"luru",
+                                type:"POST",
+                                data:{"imgData":img},
+                                dataType: "json",
+                                success:function(data){
+                                    var flag = data.success;
+                                    if (flag) {
+                                        alert("录入成功");
+                                    } else {
+                                        alert("录入失败,已有此用户");
+                                    }
+                                }
+                            });
+
+
+                        }
+                        function jiance() {
+                            //获得Canvas对象
+                            let video = document.getElementById('video');
+                            let canvas = document.getElementById('canvas');
+                            let ctx = canvas.getContext('2d');
+                            ctx.drawImage(video, 0, 0, 300, 300);
+
+                            let img = document.getElementById('canvas').toDataURL();
+                            // 这里的img就是得到的图片
+                            // console.log('img-----', img);
+                            // document.getElementById('imgTag').src=img;
+                            //上传
+                            $.ajax({
+                                url:"jiance",
+                                type:"POST",
+                                data:{"imgData":img},
+                                dataType: "json",
+                                success:function(data){
+                                    var span = $("#span_username");
+                                    var flag = data.success;
+                                    var num=Math.random()+37;//随机0~1
+                                    var newNum =num.toFixed(1);//截取小数位
+                                    if (flag) {
+                                        var msg = "可以通行<br>"+"体温"+newNum;
+                                        span.css("color", "green");
+                                        span.html(msg);
+                                    } else {
+                                        var msg = "禁止通行<br>"+"体温"+newNum;
+                                        span.css("color", "red");
+                                        span.html(msg);                                    }
+                                }
+                            });
+
+                        }
+
+
+                        // 关闭摄像头
+                        function closeMedia() {
+                            let stream = document.getElementById('video').srcObject;
+                            let tracks = stream.getTracks();
+
+                            tracks.forEach(function(track) {
+                                track.stop();
+                            });
+
+                            document.getElementById('video').srcObject = null;
+                        }
+                    </script>
+                </div>
+
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+</div><!-- /.main-container -->
+<script type="text/javascript" src="js/include.js"></script>
+</body>
+</html>
